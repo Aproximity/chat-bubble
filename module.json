@@ -1,0 +1,15 @@
+{
+  "name": "chat-bubble",
+  "title": "Chat Bubble",
+  "description": "This module display an chat icon when they want to talk.",
+  "version": "1.0.0",
+  "minimumCoreVersion": "0.7.7",
+  "compatibleCoreVersion": "0.7.9",
+  "author": "Aproximiity",
+  "esmodules": [
+    "chat-bubble.js"
+  ],
+  "url": "https://gitlab.com/Aproximiity/chat-bubble",
+  "manifest": "https://gitlab.com/Aproximiity/chat-bubble/-/blob/master/module.json",
+  "download": "https://gitlab.com/Aproximiity/chat-bubble/-/archive/v1.0.0/chat-bubble-v1.0.0.zip"
+}
