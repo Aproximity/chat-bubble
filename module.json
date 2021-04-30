@@ -5,14 +5,14 @@
   "version": "1.0.0",
   "minimumCoreVersion": "0.7.7",
   "compatibleCoreVersion": "0.7.9",
-  "author": "Aproximiity",
+  "author": "Aproximity",
   "esmodules": [
     "chat-bubble.js"
   ],
   "styles": [
     "./css/chatBubble.css"
   ],
-  "url": "https://gitlab.com/Aproximiity/chat-bubble",
-  "manifest": "https://gitlab.com/Aproximiity/chat-bubble/-/blob/master/module.json",
-  "download": "https://gitlab.com/Aproximiity/chat-bubble/-/archive/v1.0.0/chat-bubble-v1.0.0.zip"
+  "url": "https://github.com/Aproximity/chat-bubble",
+  "manifest": "https://github.com/Aproximity/chat-bubble/releases/download/v-1.0.0/module.json",
+  "download": "https://github.com/Aproximity/chat-bubble/archive/refs/tags/v-1.0.0.zip"
 }
