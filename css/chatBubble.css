@@ -1,0 +1,5 @@
+.chatBubble {
+    background: url("https://foundryvtt-data-app.s3.eu-west-3.amazonaws.com/chat.png");
+    background-repeat: no-repeat;
+    padding-left: 20px !important;
+}

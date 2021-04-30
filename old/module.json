@@ -9,9 +9,6 @@
   "esmodules": [
     "chat-bubble.js"
   ],
-  "styles": [
-    "./css/chatBubble.css"
-  ],
   "url": "https://gitlab.com/Aproximiity/chat-bubble",
   "manifest": "https://gitlab.com/Aproximiity/chat-bubble/-/blob/master/module.json",
   "download": "https://gitlab.com/Aproximiity/chat-bubble/-/archive/v1.0.0/chat-bubble-v1.0.0.zip"
