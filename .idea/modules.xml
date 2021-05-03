@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/chat-bubble.iml" filepath="$PROJECT_DIR$/.idea/chat-bubble.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Local/FoundryVTT/Data/modules/cursor-hider/.idea/cursor-hider.iml" filepath="$USER_HOME$/AppData/Local/FoundryVTT/Data/modules/cursor-hider/.idea/cursor-hider.iml" />
+    </modules>
+  </component>
+</project>

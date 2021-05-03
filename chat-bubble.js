@@ -1,28 +1,137 @@
-import {Settings} from './settings.js';
-
-let keybindKeySet = 'v'                                             // configurable keybind
-
-/**
- * Assign module settings
- */
-function registerModuleSettings() {
-    keybindKeySet = assignKeybind(game.settings.get('chat-bubble', 'userKeybindButton'));
-
-};
-
-
-/**
- * @param {String} key Keybind set by user
- */
-function assignKeybind(key) {
-    /**
-     * keybinds ending with space are trimmed by 0.7.x settings window
-     */
-    if (key.endsWith("+")) {
-        key = key + "  ";
-    }
-    return window.Azzu.SettingsTypes.KeyBinding.parse(key)
+async function preRequisitesReady() {
+    return Promise.all([areSettingsLoaded(), isCanvasReady()]);
 }
+
+async function areSettingsLoaded() {
+    return new Promise(resolve => {
+        Hooks.once('chatBubbleSettingsReady', resolve);
+    });
+}
+async function isCanvasReady() {
+    return new Promise(resolve => {
+        Hooks.once('ready', resolve);
+    });
+}
+
+
+function addCursorHiderBehavior() {
+    const hiddenUsers = new Set();
+    patchControlsLayer(hiddenUsers);
+
+    Net.onUserHidden((userId) => {
+        addHiddenUser(hiddenUsers, userId);
+    });
+
+    Net.onUserShown((userId) => {
+        deleteHiddenUser(hiddenUsers, userId);
+    });
+    window.addEventListener('keydown', (e) => {
+        if (isAnElementFocused()) {
+            return;
+        }
+
+        const KeyBinding = window.Azzu.SettingsTypes.KeyBinding;
+        const binding = Settings.toggleCursor;
+        const noPermission = !binding;
+        if (noPermission || !KeyBinding.eventIsForBinding(e, binding)) {
+            return;
+        }
+
+        if (hiddenUsers.has(game.user._id)) {
+            showCursor(hiddenUsers);
+        } else {
+            hideCursor(hiddenUsers);
+        }
+    });
+    Hooks.on('renderPlayerList', (playerList, $html, data) => {
+        hiddenUsers.forEach((userId) => {
+            const styles = `flex:0 0 17px;width:17px;height:16px;border:0`;
+            const src = `modules/chat-bubble/chatBubble.png`;
+            const alt = `I want to speak`;
+            const img = `<img style="${styles}" src="${src}" alt="${alt}" title="${alt}" />`;
+            $html.find(`[data-user-id="${userId}"]`).append(img);
+        });
+    });
+    setInterval(() => {
+        if (hiddenUsers.has(game.user._id)) {
+            Net.hideCursor();
+        }
+    }, 5000);
+
+    if (Settings.hideByDefault) {
+        hideCursor(hiddenUsers);
+    }
+}
+
+
+function isAnElementFocused() {
+    return !!$(':focus').length;
+}
+
+function hideCursor(hiddenUsers) {
+    Net.hideCursor();
+    addHiddenUser(hiddenUsers, game.user._id);
+}
+
+function showCursor(hiddenUsers) {
+    Net.showCursor();
+    deleteHiddenUser(hiddenUsers, game.user._id);
+}
+
+function addHiddenUser(hiddenUsers, userId) {
+    hiddenUsers.add(userId);
+    ui.players.render();
+}
+function deleteHiddenUser(hiddenUsers, userId) {
+    hiddenUsers.delete(userId);
+    ui.players.render();
+}
+
+
+class Net {
+    static get SOCKET_NAME() {
+        return 'module.chat-bubble';
+    }
+
+    static _emit(...args) {
+        game.socket.emit(Net.SOCKET_NAME, ...args)
+    }
+
+    static hideCursor() {
+        Net._emit({
+            cmd: 'hideBubble',
+            userId: game.user._id
+        });
+    }
+
+    static showCursor() {
+        Net._emit({
+            cmd: 'showBubble',
+            userId: game.user._id
+        });
+    }
+
+    static onUserHidden(func) {
+        game.socket.on(Net.SOCKET_NAME, (data) => {
+            if (data.cmd !== 'hideBubble') return;
+            func(data.userId);
+        });
+    }
+
+    static onUserShown(func) {
+        game.socket.on(Net.SOCKET_NAME, (data) => {
+            if (data.cmd !== 'showBubble') return;
+            func(data.userId);
+        });
+    }
+
+    static broadcastCursorPos() {
+        canvas.controls._onMoveCursor({data: {
+                getLocalPosition() { return getMousePos(); }
+            }});
+    }
+}
+
 
 /* ------------------------------------ */
 /* Initialize module		            */
@@ -44,20 +153,10 @@ Hooks.on("closeSettingsConfig", function() {
     registerModuleSettings()
 });
 
-document.addEventListener('keydown', event => {
-    if (window.Azzu.SettingsTypes.KeyBinding.eventIsForBinding(event, keybindKeySet)) {
-        console.log("TEST KEY BINDING")
-        console.log(document.getElementById('player-list'))
-        console.log(document.getElementById('player-list').getElementsByTagName("li"))
-        let player_list = document.getElementById('player-list').getElementsByTagName("li")
-        let i
-        for (i=0; i<player_list.length; i++) {
-            if (game.userId == player_list[i].dataset.userId) {
-                console.log("TEST")
-            }
-        }
-    }
-});
+window.Azzu = window.Azzu || {};
+const [Settings] = await preRequisitesReady();
+
+addCursorHiderBehavior();
 
 
 // This is for chat styling
