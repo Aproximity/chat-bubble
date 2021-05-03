@@ -21,7 +21,7 @@
 
     async function migrate() {
         let result = MIGRATION.UNNECESSARY;
-        game.settings.register(KEYS.CURSOR_HIDER, KEYS.LAST_VERSION, {
+        game.settings.register(KEYS.CHAT_BUBBLE, KEYS.LAST_VERSION, {
             config: false,
             scope: 'client',
             type: String,
