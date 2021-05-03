@@ -2,16 +2,18 @@
   "name": "chat-bubble",
   "title": "Chat Bubble",
   "description": "This module display an chat icon when they want to talk.",
-  "version": "1.0.0",
-  "minimumCoreVersion": "0.7.7",
+  "version": "1.1.0",
+  "minimumCoreVersion": "0.4.4",
   "compatibleCoreVersion": "0.7.9",
   "author": "Aproximity",
-  "esmodules": [
+  "scripts": [
+    "settings-extender.js",
+    "settings.js",
     "chat-bubble.js"
   ],
-  "styles": [
-    "./css/chatBubble.css"
-  ],
+  "styles": [],
+  "packs": [],
+  "socket": true,
   "url": "https://github.com/Aproximity/chat-bubble",
   "manifest": "https://github.com/Aproximity/chat-bubble/releases/download/v-1.0.0/module.json",
   "download": "https://github.com/Aproximity/chat-bubble/archive/refs/tags/v-1.0.0.zip"
