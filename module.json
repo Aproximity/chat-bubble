@@ -13,6 +13,12 @@
   ],
   "styles": [],
   "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "path": "languages/en.json"
+    }
+  ],
   "socket": true,
   "url": "https://github.com/Aproximity/chat-bubble",
   "manifest": "https://github.com/Aproximity/chat-bubble/releases/download/v-1.1.1/module.json",
