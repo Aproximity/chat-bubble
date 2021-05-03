@@ -1,5 +1,5 @@
 /**
- * window.Azzu.CursorHiderSettings is guaranteed to be initialized after Hooks->init
+ * window.Azzu.ChatBubbleSettings is guaranteed to be initialized after Hooks->init
  */
 (() => {
     window.Azzu = window.Azzu || {};
@@ -34,7 +34,7 @@
                 await game.settings.set(KEYS.CHAT_BUBBLE, KEYS.MINIMUM_PERMISSION, 1);
             }
 
-            registerCursorHiderSettings();
+            registerChatBubbleSettings();
 
             await game.settings.set(KEYS.CHAT_BUBBLE, KEYS.LAST_VERSION, updateVersion);
             result = lastVersion = updateVersion;
@@ -43,7 +43,7 @@
     }
 
     Hooks.once('ready', async () => {
-        registerCursorHiderSettings();
+        registerChatBubbleSettings();
         const migrationResult = await migrate();
         if (migrationResult === MIGRATION.FAILED) {
             alert('The settings of the "Cursor Hider" module could not be updated after you installed a new version.' +
@@ -65,7 +65,7 @@
 
     // Definitions
 
-    function registerCursorHiderSettings() {
+    function registerChatBubbleSettings() {
         const extraTypes = window.Azzu.SettingsTypes;
 
         const choices = Object.entries(CONST.USER_ROLES)
@@ -84,11 +84,11 @@
             scope: "world"
         });
 
-        const minPermission = CursorHiderSettings[KEYS.MINIMUM_PERMISSION];
+        const minPermission = ChatBubbleSettings[KEYS.MINIMUM_PERMISSION];
         if (game.user.hasRole(minPermission)) {
             register('toggleChatBubble', {
-                name: game.i18n.localize('CHAT-BUBBLE.toggleCursor.title'),
-                hint: game.i18n.localize('CHAT-BUBBLE.toggleCursor.hint'),
+                name: game.i18n.localize('CHAT-BUBBLE.toggleBubble.title'),
+                hint: game.i18n.localize('CHAT-BUBBLE.toggleBubble.hint'),
                 default: 'Alt + p',
                 type: extraTypes.KeyBinding
             })
