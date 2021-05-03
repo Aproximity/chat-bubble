@@ -1,6 +1,6 @@
 {
-	"CURSOR-HIDER.toggleCursor.title": "Toggle Chat Bubble Key",
-	"CURSOR-HIDER.toggleCursor.hint": "Key to press when you want to make a sign for your GM. Press your desired key (with modifiers like shift/ctrl if you want) in this field.",
-	"CURSOR-HIDER.minimumPermission.title": "Minimum Permission",
-	"CURSOR-HIDER.minimumPermission.hint": "The minimum permission to allow users to show the intention to speek. For example, if ASSISTANT is selected, only Gamemasters and their Assistants are allowed to show when they want to speak."
+	"CHAT-BUBBLE.toggleCursor.title": "Toggle Chat Bubble Key",
+	"CHAT-BUBBLE.toggleCursor.hint": "Key to press when you want to make a sign for your GM. Press your desired key (with modifiers like shift/ctrl if you want) in this field.",
+	"CHAT-BUBBLE.minimumPermission.title": "Minimum Permission",
+	"CHAT-BUBBLE.minimumPermission.hint": "The minimum permission to allow users to show the intention to speek. For example, if ASSISTANT is selected, only Gamemasters and their Assistants are allowed to show when they want to speak."
 }
