@@ -1,0 +1,67 @@
+{
+  "name": "jb2a_patreon",
+  "id": "jb2a_patreon",
+  "title": "JB2A - Patreon Complete Collection",
+  "description": "<p>Animated Assets for spells, tiles, tokens, melee and ranged attacks</p><p>Troubleshooting and FAQ section on our <a href=\"https://jb2a.com\">website</a> </p><p>Join our <a href=\"https://discord.gg/gmd8MAPX4m\">Discord server</a> for any further questions</p><p> <a href=\"https://www.jb2a.com/Library_Preview/\">Preview</a> our assets<br /></p><p>Thank you for the support ! ❤️</p>",
+  "author": "Gazkhan#8192 and Wassily#8035",
+  "authors": [
+    {
+      "name": "Jules",
+      "url": "https://www.patreon.com/JB2A",
+      "discord": "Gazkhan#8192"
+    },
+    {
+      "name": "Ben",
+      "url": "https://www.patreon.com/JB2A",
+      "discord": "Wassily#8035"
+    }
+  ],
+  "url": "https://www.patreon.com/JB2A",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "media": [
+    {
+    "type": "setup",
+    "url": "https://www.jb2a.com/artwork/Gifs/animated-banner.gif",
+    "thumbnail": ""
+    }
+  ],
+  "flags": {},
+  "version": "0.6.7",
+  "minimumCoreVersion": "7",
+  "compatibleCoreVersion": "11",
+  "compatibility": {
+    "minimum": 9,
+    "verified": 11
+  },
+  "esmodules": [
+    "./scripts/jb2a.js"
+  ],
+  "styles": [],
+  "languages": [],
+  "packs": [
+    {
+      "type": "Macro",
+      "label": "JB2A Sequencer Macros",
+      "name": "jb2a-sequencer",
+      "path": "./packs/jb2a-sequencer.db",
+      "module": "jb2a_patreon",
+      "private": false
+    },
+    {
+      "type": "Actor",
+      "label": "JB2A DnD5e Actors",
+      "name": "jb2a-actors",
+      "system": "dnd5e",
+      "path": "./packs/jb2a-actors.db",
+      "module": "jb2a_patreon",
+      "private": false
+    }
+  ],
+  "relationships": {},
+  "socket": false,
+  "manifest": "https://www.dropbox.com/scl/fi/6j2vf03basmy531y1az25/module.json?rlkey=k2jqjwopjsm23yekqlpaef6ww&dl=1",
+  "download": "https://www.dropbox.com/scl/fi/w5pdssachwf0ul4w0gnqp/jb2a_patreon-0.6.7.zip?rlkey=vfx5aqra9w75szlnx1f8zr3px&dl=1",
+  "protected": false,
+  "coreTranslation": false,
+  "library": false
+}
